@@ -36,7 +36,7 @@ function swapTiles(selectedCell,destinationCell) {
     selectedCell.appendChild(destinationImage);
     destinationCell.appendChild(selectedImage);
     if(isComplete()){
-        alert('哈哈哈');
+        alert('恭喜您,没有奖!! 哈哈哈');
     }
 }
 
