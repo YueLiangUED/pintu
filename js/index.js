@@ -1,6 +1,15 @@
 /**
  * Created by wangbiaozy on 17/6/23.
  */
+
+(function(global){
+    function remChange(){
+        document.documentElement.style.fontSize=20*document.documentElement.clientWidth/750+'px';
+    }
+    remChange();
+    global.addEventListener('resize',remChange,false);
+})(window);
+
 window.onload = initPage;
 
 function initPage() {
@@ -42,7 +51,8 @@ function swapTiles(selectedCell,destinationCell) {
 
 function tileClick() {
     if(cellIsEmpty(this)){
-        alert('请点击带有数字的方块!')
+        alert('请点击带有数字的方块!');
+        return;
     }
     var currentRow = this.id.charAt(4),
         currentCol = this.id.charAt(5);
@@ -65,6 +75,7 @@ function tileClick() {
         }
     }
     if(currentCol > 1){
+        console.log(1);
         var testCol = Number(currentCol) - 1,
             testCellId = 'cell' + currentRow + testCol,
             testCell = document.getElementById(testCellId);
@@ -81,8 +92,8 @@ function tileClick() {
             swapTiles(this,testCell);
             return;
         }
-        alert('请点击与空格处相邻的数字!');
     }
+    alert('请点击与空格处相邻的数字!');
 }
 
 function isComplete() {
